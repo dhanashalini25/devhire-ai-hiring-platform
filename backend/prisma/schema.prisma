@@ -1,0 +1,145 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  CANDIDATE
+  RECRUITER
+  ADMIN
+}
+
+enum JobStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+}
+
+enum ApplicationStatus {
+  APPLIED
+  REVIEWING
+  SHORTLISTED
+  INTERVIEW
+  REJECTED
+  HIRED
+}
+
+model User {
+  id              String           @id @default(cuid())
+  name            String
+  email           String           @unique
+  password        String
+  role            Role
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  candidateProfile CandidateProfile?
+  recruiterProfile RecruiterProfile?
+  notifications    Notification[]
+}
+
+model CandidateProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  phone       String?
+  location    String?
+  bio         String?
+  skills      String[]
+  experience  Int?
+  resumeUrl   String?
+  resumeText  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  applications Application[]
+  matches      Match[]
+}
+
+model RecruiterProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  companyName String
+  companyUrl  String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobs Job[]
+}
+
+model Job {
+  id             String    @id @default(cuid())
+  recruiterId    String
+  title          String
+  description    String
+  requiredSkills String[]
+  location       String?
+  employmentType String?
+  minExperience  Int?
+  maxExperience  Int?
+  salaryMin      Int?
+  salaryMax      Int?
+  status         JobStatus @default(DRAFT)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  recruiter    RecruiterProfile @relation(fields: [recruiterId], references: [id], onDelete: Cascade)
+  applications Application[]
+  matches      Match[]
+
+  @@index([status])
+  @@index([location])
+}
+
+model Application {
+  id          String            @id @default(cuid())
+  candidateId String
+  jobId       String
+  status      ApplicationStatus @default(APPLIED)
+  coverLetter String?
+  appliedAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  job       Job              @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, jobId])
+  @@index([status])
+}
+
+model Match {
+  id              String   @id @default(cuid())
+  candidateId     String
+  jobId           String
+  score           Float
+  matchedSkills   String[]
+  missingSkills   String[]
+  explanation     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  job       Job              @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, jobId])
+  @@index([score])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
+}
