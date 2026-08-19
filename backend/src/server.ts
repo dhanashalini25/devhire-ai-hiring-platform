@@ -182,12 +182,12 @@ app.use(
   }
 );
 
-// ======================================================
+// =====================================================
 // START SERVER
-// ======================================================
+// =====================================================
 
-app.listen(PORT, () => {
-  console.log(
-    `🚀 DevHire API running on http://localhost:${PORT}`
-  );
+const PORT = Number(process.env.PORT) || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 DevHire API running on port ${PORT}`);
 });
