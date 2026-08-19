@@ -1,507 +1,449 @@
 import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
 
-      {/* =========================================================
-          NAVIGATION
-      ========================================================= */}
-      <nav className="border-b border-slate-800">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+      {/* =====================================================
+          NAVBAR
+      ===================================================== */}
+
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
+
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
           {/* LOGO */}
+
           <Link
             href="/"
             className="text-2xl font-bold tracking-tight"
           >
-            Dev<span className="text-blue-500">Hire</span>
+            Dev<span className="text-cyan-400">Hire</span>
           </Link>
 
-          {/* NAVIGATION LINKS */}
-          <div className="hidden gap-8 text-sm text-slate-300 md:flex">
+          {/* NAVIGATION */}
+
+          <nav className="hidden items-center gap-8 md:flex">
 
             <Link
               href="#features"
-              className="hover:text-white"
+              className="text-sm text-gray-300 transition hover:text-cyan-400"
             >
               Features
             </Link>
 
             <Link
               href="#how-it-works"
-              className="hover:text-white"
+              className="text-sm text-gray-300 transition hover:text-cyan-400"
             >
               How It Works
             </Link>
 
             <Link
               href="#about"
-              className="hover:text-white"
+              className="text-sm text-gray-300 transition hover:text-cyan-400"
             >
               About
             </Link>
 
-          </div>
-
-          {/* LOGIN / GET STARTED */}
-          <div className="flex gap-3">
-
             <Link
               href="/login"
-              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 hover:text-white"
+              className="text-sm font-medium text-white transition hover:text-cyan-400"
             >
               Login
             </Link>
 
             <Link
               href="/login"
-              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold hover:bg-blue-500"
+              className="rounded-lg bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-400"
             >
               Get Started
             </Link>
 
-          </div>
+          </nav>
 
-        </div>
-      </nav>
-
-
-      {/* =========================================================
-          HERO
-      ========================================================= */}
-      <section className="relative overflow-hidden">
-
-        <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 lg:grid-cols-2 lg:py-32">
-
-          {/* LEFT */}
-          <div>
-
-            <div className="mb-6 inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-400">
-              AI-Powered Developer Hiring
-            </div>
-
-            <h1 className="max-w-3xl text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-              Hire the right
-              <span className="text-blue-500"> developers </span>
-              faster.
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-              DevHire connects talented developers with the right
-              opportunities using AI-powered candidate matching,
-              intelligent recruitment workflows, and explainable insights.
-            </p>
-
-            {/* HERO BUTTONS */}
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-
-              <Link
-                href="/login"
-                className="rounded-xl bg-blue-600 px-7 py-3.5 text-center font-semibold transition hover:bg-blue-500"
-              >
-                Find Developer Jobs
-              </Link>
-
-              <Link
-                href="/login"
-                className="rounded-xl border border-slate-700 px-7 py-3.5 text-center font-semibold text-slate-200 transition hover:bg-slate-900"
-              >
-                Hire Developers
-              </Link>
-
-            </div>
-
-            {/* STATS */}
-            <div className="mt-10 flex gap-8 text-sm text-slate-400">
-
-              <div>
-                <p className="text-2xl font-bold text-white">
-                  AI
-                </p>
-                <p>Smart Matching</p>
-              </div>
-
-              <div>
-                <p className="text-2xl font-bold text-white">
-                  100%
-                </p>
-                <p>Explainable</p>
-              </div>
-
-              <div>
-                <p className="text-2xl font-bold text-white">
-                  24/7
-                </p>
-                <p>Recruitment</p>
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* RIGHT - MATCH CARD */}
-          <div className="relative">
-
-            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-2xl">
-
-              <div className="flex items-center justify-between">
-
-                <div>
-                  <p className="text-sm text-slate-400">
-                    AI Candidate Match
-                  </p>
-
-                  <h2 className="mt-1 text-xl font-semibold">
-                    Backend Engineer
-                  </h2>
-                </div>
-
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-blue-500 text-xl font-bold">
-                  92%
-                </div>
-
-              </div>
-
-
-              <div className="mt-8 space-y-5">
-
-                {/* PYTHON */}
-                <div>
-
-                  <div className="mb-2 flex justify-between text-sm">
-                    <span className="text-slate-300">
-                      Python
-                    </span>
-
-                    <span className="text-green-400">
-                      Matched
-                    </span>
-                  </div>
-
-                  <div className="h-2 rounded-full bg-slate-800">
-                    <div className="h-2 w-full rounded-full bg-green-500" />
-                  </div>
-
-                </div>
-
-
-                {/* FASTAPI */}
-                <div>
-
-                  <div className="mb-2 flex justify-between text-sm">
-                    <span className="text-slate-300">
-                      FastAPI
-                    </span>
-
-                    <span className="text-green-400">
-                      Matched
-                    </span>
-                  </div>
-
-                  <div className="h-2 rounded-full bg-slate-800">
-                    <div className="h-2 w-11/12 rounded-full bg-green-500" />
-                  </div>
-
-                </div>
-
-
-                {/* POSTGRESQL */}
-                <div>
-
-                  <div className="mb-2 flex justify-between text-sm">
-                    <span className="text-slate-300">
-                      PostgreSQL
-                    </span>
-
-                    <span className="text-green-400">
-                      Matched
-                    </span>
-                  </div>
-
-                  <div className="h-2 rounded-full bg-slate-800">
-                    <div className="h-2 w-10/12 rounded-full bg-green-500" />
-                  </div>
-
-                </div>
-
-
-                {/* AWS */}
-                <div>
-
-                  <div className="mb-2 flex justify-between text-sm">
-                    <span className="text-slate-300">
-                      AWS
-                    </span>
-
-                    <span className="text-yellow-400">
-                      Partial
-                    </span>
-                  </div>
-
-                  <div className="h-2 rounded-full bg-slate-800">
-                    <div className="h-2 w-5/12 rounded-full bg-yellow-500" />
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              {/* INSIGHT */}
-              <div className="mt-8 rounded-xl border border-slate-800 bg-slate-950 p-4">
-
-                <p className="text-sm font-semibold text-white">
-                  AI Compatibility Insight
-                </p>
-
-                <p className="mt-2 text-sm leading-6 text-slate-400">
-                  Strong backend alignment with excellent Python and API
-                  experience. AWS knowledge is the primary skill gap.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================================================
-          FEATURES
-      ========================================================= */}
-      <section
-        id="features"
-        className="border-t border-slate-800 bg-slate-900/40"
-      >
-
-        <div className="mx-auto max-w-7xl px-6 py-24">
-
-          <div className="mx-auto max-w-2xl text-center">
-
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-500">
-              Platform
-            </p>
-
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Intelligent hiring from start to finish
-            </h2>
-
-            <p className="mt-4 text-slate-400">
-              Everything recruiters and developers need in one platform.
-            </p>
-
-          </div>
-
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-
-            <Feature
-              title="AI Matching"
-              description="Match candidates to jobs using skills, requirements, embeddings, and compatibility analysis."
-            />
-
-            <Feature
-              title="Smart Applications"
-              description="Manage applications through a structured recruitment lifecycle."
-            />
-
-            <Feature
-              title="Recruiter Workflows"
-              description="Create jobs, review candidates, shortlist talent, and manage hiring pipelines."
-            />
-
-            <Feature
-              title="Explainable Insights"
-              description="Understand why a candidate matches a role and identify missing skills."
-            />
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================================================
-          HOW IT WORKS
-      ========================================================= */}
-      <section id="how-it-works">
-
-        <div className="mx-auto max-w-7xl px-6 py-24">
-
-          <div className="max-w-2xl">
-
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-500">
-              How It Works
-            </p>
-
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              From application to intelligent matching
-            </h2>
-
-          </div>
-
-
-          <div className="mt-14 grid gap-8 md:grid-cols-4">
-
-            <Step
-              number="01"
-              title="Create Profile"
-              description="Developers create profiles and upload their resumes."
-            />
-
-            <Step
-              number="02"
-              title="Create Job"
-              description="Recruiters publish jobs with required skills and requirements."
-            />
-
-            <Step
-              number="03"
-              title="AI Analysis"
-              description="DevHire analyzes candidate and job requirements."
-            />
-
-            <Step
-              number="04"
-              title="Match & Hire"
-              description="Recruiters receive compatibility scores and actionable insights."
-            />
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================================================
-          ABOUT / CTA
-      ========================================================= */}
-      <section
-        id="about"
-        className="border-t border-slate-800"
-      >
-
-        <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-
-          <h2 className="text-3xl font-bold md:text-5xl">
-            Build better teams with AI.
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-2xl text-slate-400">
-            DevHire brings intelligent matching and modern recruitment
-            workflows together in one developer-focused hiring platform.
-          </p>
+          {/* MOBILE LOGIN */}
 
           <Link
             href="/login"
-            className="mt-8 inline-block rounded-xl bg-blue-600 px-8 py-4 font-semibold hover:bg-blue-500"
-          >
-            Get Started
-          </Link>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================================================
-          FOOTER
-      ========================================================= */}
-      <footer className="border-t border-slate-800">
-
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-
-          <p>
-            © 2026 DevHire. AI-Powered Developer Hiring Platform.
-          </p>
-
-          <p>
-            Built with Next.js • TypeScript • AI
-          </p>
-
-          <Link
-            href="/login"
-            className="text-slate-400 hover:text-white"
+            className="text-sm font-semibold text-cyan-400 md:hidden"
           >
             Login
           </Link>
 
         </div>
 
+      </header>
+
+
+      {/* =====================================================
+          HERO
+      ===================================================== */}
+
+      <section className="relative overflow-hidden pt-20">
+
+        {/* Background glow */}
+
+        <div className="pointer-events-none absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
+
+          <div className="mx-auto max-w-4xl text-center">
+
+            {/* Badge */}
+
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400">
+
+              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+
+              AI-Powered Hiring Platform
+
+            </div>
+
+
+            {/* Heading */}
+
+            <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
+
+              Hire Smarter.
+
+              <br />
+
+              <span className="text-cyan-400">
+                Build Faster.
+              </span>
+
+            </h1>
+
+
+            {/* Description */}
+
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-gray-400 md:text-xl">
+
+              DevHire connects talented candidates with recruiters
+              using intelligent job matching, streamlined applications,
+              and modern hiring technology.
+
+            </p>
+
+
+            {/* Buttons */}
+
+            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+
+              <Link
+                href="/login"
+                className="rounded-xl bg-cyan-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400"
+              >
+                Find a Job
+              </Link>
+
+              <Link
+                href="/login"
+                className="rounded-xl border border-slate-700 px-8 py-4 text-lg font-semibold text-white transition hover:border-cyan-400 hover:bg-slate-900"
+              >
+                Recruit Talent
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          FEATURES
+      ===================================================== */}
+
+      <section
+        id="features"
+        className="border-t border-slate-800 py-24"
+      >
+
+        <div className="mx-auto max-w-7xl px-6">
+
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+
+            <p className="mb-3 text-sm font-semibold tracking-widest text-cyan-400">
+              FEATURES
+            </p>
+
+            <h2 className="text-4xl font-bold md:text-5xl">
+              Everything You Need to Hire
+            </h2>
+
+            <p className="mt-5 text-lg text-gray-400">
+              A complete platform for candidates and recruiters,
+              designed to make the hiring process faster and simpler.
+            </p>
+
+          </div>
+
+
+          <div className="grid gap-8 md:grid-cols-3">
+
+            {/* FEATURE 1 */}
+
+            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-8 transition hover:border-cyan-500/50">
+
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-2xl">
+                🤖
+              </div>
+
+              <h3 className="mb-4 text-xl font-bold">
+                AI Job Matching
+              </h3>
+
+              <p className="leading-relaxed text-gray-400">
+                Match candidates with relevant job opportunities
+                using intelligent skills and experience analysis.
+              </p>
+
+            </div>
+
+
+            {/* FEATURE 2 */}
+
+            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-8 transition hover:border-cyan-500/50">
+
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-2xl">
+                ⚡
+              </div>
+
+              <h3 className="mb-4 text-xl font-bold">
+                Fast Applications
+              </h3>
+
+              <p className="leading-relaxed text-gray-400">
+                Candidates can discover jobs, maintain their profiles,
+                and apply quickly from one platform.
+              </p>
+
+            </div>
+
+
+            {/* FEATURE 3 */}
+
+            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-8 transition hover:border-cyan-500/50">
+
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-2xl">
+                📊
+              </div>
+
+              <h3 className="mb-4 text-xl font-bold">
+                Recruiter Dashboard
+              </h3>
+
+              <p className="leading-relaxed text-gray-400">
+                Recruiters can create jobs, review applications,
+                and manage candidate hiring status.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          HOW IT WORKS
+      ===================================================== */}
+
+      <section
+        id="how-it-works"
+        className="border-t border-slate-800 bg-slate-900/40 py-24"
+      >
+
+        <div className="mx-auto max-w-7xl px-6">
+
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+
+            <p className="mb-3 text-sm font-semibold tracking-widest text-cyan-400">
+              HOW IT WORKS
+            </p>
+
+            <h2 className="text-4xl font-bold md:text-5xl">
+              Simple. Fast. Intelligent.
+            </h2>
+
+          </div>
+
+
+          <div className="grid gap-12 md:grid-cols-3">
+
+            {/* STEP 1 */}
+
+            <div className="text-center">
+
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan-500 text-2xl font-bold">
+                1
+              </div>
+
+              <h3 className="mt-6 text-xl font-bold">
+                Create Your Profile
+              </h3>
+
+              <p className="mt-3 leading-relaxed text-gray-400">
+                Candidates and recruiters create their accounts
+                and complete their profiles.
+              </p>
+
+            </div>
+
+
+            {/* STEP 2 */}
+
+            <div className="text-center">
+
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan-500 text-2xl font-bold">
+                2
+              </div>
+
+              <h3 className="mt-6 text-xl font-bold">
+                Discover Opportunities
+              </h3>
+
+              <p className="mt-3 leading-relaxed text-gray-400">
+                Candidates discover suitable jobs while recruiters
+                publish opportunities.
+              </p>
+
+            </div>
+
+
+            {/* STEP 3 */}
+
+            <div className="text-center">
+
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan-500 text-2xl font-bold">
+                3
+              </div>
+
+              <h3 className="mt-6 text-xl font-bold">
+                Connect &amp; Hire
+              </h3>
+
+              <p className="mt-3 leading-relaxed text-gray-400">
+                Candidates apply and recruiters review applications
+                and manage the hiring process.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          ABOUT
+      ===================================================== */}
+
+      <section
+        id="about"
+        className="border-t border-slate-800 py-24"
+      >
+
+        <div className="mx-auto max-w-4xl px-6 text-center">
+
+          <p className="mb-3 text-sm font-semibold tracking-widest text-cyan-400">
+            ABOUT DEVHIRE
+          </p>
+
+          <h2 className="text-4xl font-bold md:text-5xl">
+            Modern Hiring for Modern Teams
+          </h2>
+
+          <p className="mt-6 text-lg leading-relaxed text-gray-400">
+
+            DevHire is an AI-powered hiring platform built to simplify
+            the connection between skilled candidates and companies.
+            From discovering jobs to managing applications, DevHire
+            brings the complete hiring workflow into one place.
+
+          </p>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          CTA
+      ===================================================== */}
+
+      <section className="border-t border-slate-800 py-24">
+
+        <div className="mx-auto max-w-5xl px-6">
+
+          <div className="rounded-3xl border border-slate-700 bg-slate-900 p-10 text-center md:p-16">
+
+            <h2 className="text-4xl font-bold md:text-5xl">
+              Ready to Get Started?
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-400">
+              Join DevHire and take the next step in your hiring journey.
+            </p>
+
+            <Link
+              href="/login"
+              className="mt-8 inline-block rounded-xl bg-cyan-500 px-8 py-4 text-lg font-semibold text-white transition hover:bg-cyan-400"
+            >
+              Login to DevHire
+            </Link>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
+
+      <footer className="border-t border-slate-800">
+
+        <div className="mx-auto max-w-7xl px-6 py-8">
+
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+
+            <Link
+              href="/"
+              className="text-xl font-bold"
+            >
+              Dev<span className="text-cyan-400">
+                Hire
+              </span>
+            </Link>
+
+            <p className="text-sm text-gray-500">
+              © 2026 DevHire. All rights reserved.
+            </p>
+
+            <Link
+              href="/login"
+              className="text-sm text-gray-400 transition hover:text-cyan-400"
+            >
+              Login
+            </Link>
+
+          </div>
+
+        </div>
+
       </footer>
 
     </main>
-  );
-}
-
-
-/* =========================================================
-   FEATURE COMPONENT
-========================================================= */
-
-function Feature({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-blue-500/40">
-
-      <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10 text-blue-500">
-        ✦
-      </div>
-
-      <h3 className="text-lg font-semibold">
-        {title}
-      </h3>
-
-      <p className="mt-3 text-sm leading-6 text-slate-400">
-        {description}
-      </p>
-
-    </div>
-  );
-}
-
-
-/* =========================================================
-   STEP COMPONENT
-========================================================= */
-
-function Step({
-  number,
-  title,
-  description,
-}: {
-  number: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="relative rounded-2xl border border-slate-800 bg-slate-900 p-6">
-
-      <span className="text-sm font-bold text-blue-500">
-        {number}
-      </span>
-
-      <h3 className="mt-4 text-xl font-semibold">
-        {title}
-      </h3>
-
-      <p className="mt-3 text-sm leading-6 text-slate-400">
-        {description}
-      </p>
-
-    </div>
   );
 }
