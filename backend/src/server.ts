@@ -18,7 +18,11 @@ import { authorize } from "./middleware/role.middleware";
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+// ======================================================
+// PORT
+// ======================================================
+
+const PORT = Number(process.env.PORT) || 5000;
 
 // ======================================================
 // MIDDLEWARE
@@ -32,19 +36,23 @@ app.use(
       "http://localhost:5173",
     ],
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
 
 // ======================================================
 // ROOT
 // ======================================================
 
 app.get("/", (_req, res) => {
-  res.json({
+  res.status(200).json({
     success: true,
     message: "Welcome to DevHire API",
     version: "1.0.0",
@@ -108,12 +116,12 @@ app.get(
   "/api/protected",
   authenticate,
   (req: AuthRequest, res) => {
-    res.json({
+    res.status(200).json({
       success: true,
       message: "You accessed a protected route",
       user: req.user,
     });
-  }
+  },
 );
 
 // ======================================================
@@ -125,12 +133,12 @@ app.get(
   authenticate,
   authorize("RECRUITER"),
   (req: AuthRequest, res) => {
-    res.json({
+    res.status(200).json({
       success: true,
       message: "Recruiter authorization successful",
       user: req.user,
     });
-  }
+  },
 );
 
 // ======================================================
@@ -142,16 +150,16 @@ app.get(
   authenticate,
   authorize("CANDIDATE"),
   (req: AuthRequest, res) => {
-    res.json({
+    res.status(200).json({
       success: true,
       message: "Candidate authorization successful",
       user: req.user,
     });
-  }
+  },
 );
 
 // ======================================================
-// 404
+// 404 HANDLER
 // ======================================================
 
 app.use((req, res) => {
@@ -171,7 +179,7 @@ app.use(
     error: any,
     _req: express.Request,
     res: express.Response,
-    _next: express.NextFunction
+    _next: express.NextFunction,
   ) => {
     console.error("Unhandled server error:", error);
 
@@ -179,15 +187,15 @@ app.use(
       success: false,
       message: "Internal server error",
     });
-  }
+  },
 );
 
-// =====================================================
+// ======================================================
 // START SERVER
-// =====================================================
-
-const PORT = Number(process.env.PORT) || 5000;
+// ======================================================
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 DevHire API running on port ${PORT}`);
+  console.log(
+    `🚀 DevHire API running on http://localhost:${PORT}`,
+  );
 });
